@@ -2,11 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
+        debug {
+        }
         release {
-            keyAlias 'BarcodeScanner'
-            keyPassword 'barcodeScanner'
+            keyAlias 'barcodescanner'
+            keyPassword 'barcodescanner'
             storeFile file('/Users/lightshadow/Documents/miiixer_android/BarCodeScanner/BarcodeScanner.jks')
-            storePassword 'miiixer'
+            storePassword 'barcodescanner'
         }
     }
     compileSdkVersion 22
@@ -20,22 +22,19 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
 repositories {
-    mavenCentral()
-
-    maven {
-        url "https://dl.bintray.com/journeyapps/maven"
-    }
+    jcenter()
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.journeyapps:zxing-android-embedded:3.0.2@aar'
     compile 'com.google.zxing:core:3.2.0'
-    compile 'com.journeyapps:zxing-android-embedded:3.0.0-beta2@aar'
 }
