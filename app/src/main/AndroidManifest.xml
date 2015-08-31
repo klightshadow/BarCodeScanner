@@ -2,9 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.miiixer.barcodescanner" >
 
+    <supports-screens android:anyDensity="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"
+        android:smallScreens="true"
+        android:normalScreens="true"/>
+
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera2"/>
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-feature android:name="android.hardware.camera2" />
 
     <application
         android:allowBackup="true"
